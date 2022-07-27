@@ -38,9 +38,30 @@ namespace PhoneBook
 
                         Console.WriteLine("Give contact name:");
                         name = Console.ReadLine();
+                        
+                        do
+                        {
+                            if (name.Length == 0)
+                            {
+                                Console.WriteLine("The name cannot be empty!");
+                                name = Console.ReadLine();
+
+                            }
+                        } while (name.Length == 0);
+
 
                         Console.WriteLine("Give contact number:");
                         number = Console.ReadLine();
+                        do
+                        {
+                            if (number.Length != 9)
+                            {
+                                Console.WriteLine("The length of the number is inappropriate!");
+                                number = Console.ReadLine();
+
+                            }
+                        } while (number.Length != 9);
+
 
                         Contact contact = new Contact(name, number);
 
@@ -52,48 +73,39 @@ namespace PhoneBook
                     case "2":
 
                         if (phoneBook.IslistEmpty())
-                        {
                             Console.WriteLine("The phone book is empty!");
-                        }
                         else
                         {
                             Console.WriteLine("Give number of contact's you want to find:");
                             phoneBook.SearchContactByNumber(Console.ReadLine());
                         }
-
                         break;
 
                     case "3":
 
-                        phoneBook.DisplayAllContacts();
-
+                        if (phoneBook.IslistEmpty())
+                            Console.WriteLine("The phone book is empty!");
+                        else
+                            phoneBook.DisplayAllContacts();
                         break;
 
                     case "4":
-                        
+
                         if (phoneBook.IslistEmpty())
-                        {
                             Console.WriteLine("The phone book is empty!");
-                        }
                         else
                         {
                             Console.WriteLine("Give phrase you want to search contact by:");
                             phoneBook.SearchContactByPhrase(Console.ReadLine());
                         }
-
                         break;
 
                     case "5":
-                        
-                        if (phoneBook.IslistEmpty())
-                        {
-                            Console.WriteLine("The phone book is empty!");
-                        }
-                        else
-                        {
-                            phoneBook.RemoveContact();
-                        }
 
+                        if (phoneBook.IslistEmpty())
+                            Console.WriteLine("The phone book is empty!");
+                        else
+                            phoneBook.RemoveContact();
                         break;
 
                     case "x":
@@ -113,15 +125,6 @@ namespace PhoneBook
                 Console.Clear();
 
             } while (userInput != "x");
-
-
-
-
-            //Contact c1 = new Contact("Kamil", "698268556");
-            //c1.Name = "Ka";
-            //Console.WriteLine(c1.Name);
-
-
         }
     }
 }
