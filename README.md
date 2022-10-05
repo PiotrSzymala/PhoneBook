@@ -8,6 +8,3 @@ I did this project to consolidate the knowledge that I gained throughout the int
 ## Used technologies
 Project is created with:
 * C#
-## Project status
-* 1.0 version developed.
-* Further improvements incoming.
